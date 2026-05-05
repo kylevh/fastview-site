@@ -1,0 +1,487 @@
+/* Dashboard page only */
+
+.dashboardHeader {
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.dashboardGrid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start;
+}
+
+.statCard {
+  position: relative;
+  overflow: hidden;
+}
+
+.statTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.statTitle {
+  font-weight: 650;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.statIcon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(15, 23, 42, 0.02);
+}
+
+.statValue {
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.statHint {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.statCard-neutral .statIcon {
+  color: rgba(37, 99, 235, 0.95);
+  border-color: rgba(37, 99, 235, 0.18);
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.statCard-warn .statIcon {
+  color: rgba(217, 119, 6, 0.95);
+  border-color: rgba(245, 158, 11, 0.22);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.statCard-danger .statIcon {
+  color: rgba(220, 38, 38, 0.95);
+  border-color: rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.watchedCard {
+  padding-top: 16px;
+}
+
+.watchedHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 2px 8px;
+  margin-bottom: 10px;
+}
+
+.watchedTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.watchedIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(37, 99, 235, 0.08);
+  color: rgba(37, 99, 235, 0.95);
+}
+
+.watchedTitle {
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.recordLink {
+  color: rgba(37, 99, 235, 0.98);
+  text-decoration: none;
+}
+
+.recordLink:hover {
+  text-decoration: underline;
+}
+
+.iconAction {
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(15, 23, 42, 0.02);
+  color: rgba(15, 23, 42, 0.72);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.iconAction:hover {
+  border-color: rgba(37, 99, 235, 0.28);
+  background: rgba(37, 99, 235, 0.06);
+  color: rgba(15, 23, 42, 0.86);
+}
+
+.iconActionDanger:hover {
+  border-color: rgba(239, 68, 68, 0.26);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.chip-info {
+  border-color: rgba(37, 99, 235, 0.25);
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.chip-warn {
+  border-color: rgba(245, 158, 11, 0.3);
+  background: rgba(245, 158, 11, 0.14);
+}
+
+.chip-success {
+  border-color: rgba(34, 197, 94, 0.28);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.chip-neutral {
+  border-color: rgba(100, 116, 139, 0.25);
+  background: rgba(100, 116, 139, 0.08);
+}
+
+.watchedTable {
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.watchedTr {
+  grid-template-columns: 0.95fr 1.5fr 1.05fr 1.15fr 0.9fr 0.7fr;
+  align-items: center;
+}
+
+.watchedTr.th {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.watchedTr .chip {
+  height: 24px;
+  font-size: 11px;
+  padding: 0 9px;
+}
+
+.watchedTr .mono {
+  font-size: 12.5px;
+}
+
+.watchedTr > :nth-child(2),
+.watchedTr.th > :nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.watchedTr > :nth-child(6) {
+  justify-self: end;
+}
+
+@media (max-width: 900px) {
+  .watchedTr {
+    grid-template-columns: 1fr;
+  }
+
+  .watchedTr > :nth-child(2),
+  .watchedTr.th > :nth-child(2) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .watchedTr > :nth-child(6) {
+    justify-self: start;
+  }
+}
+
+.findRecordCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 240px;
+  padding: 0;
+  border-color: rgba(15, 23, 42, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.86));
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.04),
+    0 16px 44px rgba(15, 23, 42, 0.08);
+}
+
+/* Premium monochrome overlays */
+.findRecordCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 0;
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 30% 25%, black 0%, transparent 68%);
+}
+
+/* Light sweep (specular highlight) */
+.findRecordCard::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -60%;
+  width: 120%;
+  height: 180%;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    65deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.0) 38%,
+    rgba(255, 255, 255, 0.28) 46%,
+    rgba(255, 255, 255, 0.0) 54%,
+    transparent 100%
+  );
+  filter: blur(1px);
+  opacity: 0.8;
+  mix-blend-mode: overlay;
+  will-change: transform, opacity;
+  transform: translate3d(-35%, 0, 0) rotate(0.001deg);
+}
+
+/* Subtle grain */
+.findRecordContent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  z-index: 0;
+  background-image: repeating-linear-gradient(135deg, rgba(15, 23, 42, 0.14) 0 1px, transparent 1px 7px);
+  mask-image: radial-gradient(circle at 35% 30%, black 0%, transparent 72%);
+}
+
+.findRecordContent {
+  position: relative;
+  z-index: 2;
+  min-height: 240px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .findRecordCard::after {
+    opacity: 0;
+  }
+}
+
+.findRecordHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.findRecordTitle {
+  font-weight: 750;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+}
+
+.findRecordSub {
+  color: var(--muted);
+  max-width: 70ch;
+  font-size: 14px;
+}
+
+.findRecordForm {
+  margin-top: 12px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  width: min(860px, 100%);
+}
+
+.commandBar {
+  width: min(860px, 100%);
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.05),
+    0 10px 30px rgba(37, 99, 235, 0.08);
+}
+
+.commandBar:focus-within {
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.14),
+    0 12px 34px rgba(37, 99, 235, 0.12);
+}
+
+.commandIcon {
+  color: rgba(15, 23, 42, 0.6);
+  display: grid;
+  place-items: center;
+}
+
+.commandInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.commandHint {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.6);
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.commandButton {
+  appearance: none;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  background: rgba(37, 99, 235, 0.92);
+  color: white;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 650;
+}
+
+.commandButton:hover {
+  background: rgba(37, 99, 235, 1);
+  border-color: rgba(37, 99, 235, 0.34);
+}
+
+.findRecordMeta {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  color: rgba(15, 23, 42, 0.62);
+  font-size: 12px;
+}
+
+.metaDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.9);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
+  animation: metaDotPulse 1.6s ease-in-out infinite;
+}
+
+.metaSep {
+  opacity: 0.55;
+}
+
+@keyframes metaDotPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.14);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px rgba(34, 197, 94, 0.08);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metaDot {
+    animation: none;
+  }
+}
+
+.searchRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.field {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.metricValue {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.metricHint {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .commandBar {
+    height: 56px;
+    padding-right: 8px;
+  }
+
+  .commandHint {
+    display: none;
+  }
+
+  .searchRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
