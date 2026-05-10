@@ -364,21 +364,13 @@
   max-width: 100%;
 }
 
-/* Dot + text: keeps the indicator aligned with the headline when detail text wraps */
+/* Dot + single-line status (PermitApiStatusLine) */
 .findRecordMetaBody {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--gap-sm);
   min-width: 0;
-  flex: 1 1 14rem;
-}
-
-.findRecordMetaMain {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-  flex: 1;
+  flex: 1 1 auto;
 }
 
 .findRecordMetaStrong {
@@ -388,15 +380,11 @@
   line-height: 1.25;
 }
 
-.findRecordMetaDetail {
-  display: block;
-  font-size: 11px;
-  line-height: 1.45;
-  color: rgba(15, 23, 42, 0.52);
-}
-
-.findRecordMeta--down .findRecordMetaDetail {
-  margin-top: 2px;
+.permitApiStatusLineText {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .findRecordMeta--up {
@@ -410,72 +398,24 @@
 }
 
 .findRecordMeta--down {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 10px;
-  border-color: rgba(239, 68, 68, 0.28);
-  background: rgba(239, 68, 68, 0.06);
-}
-
-.findRecordMeta--down .findRecordMetaBody {
-  flex: 1 1 auto;
-  width: 100%;
-}
-
-.findRecordMetaRetryWrap {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.findRecordMetaRetryWrap .metaRetryButton {
-  margin-top: 0;
-}
-
-.metaRetryButton {
-  flex-shrink: 0;
-  align-self: flex-start;
-  margin-top: 0.32em;
-  appearance: none;
-  border: 1px solid rgba(37, 99, 235, 0.35);
-  background: rgba(37, 99, 235, 0.08);
-  color: rgba(37, 99, 235, 0.95);
-  font: inherit;
-  font-size: 11px;
-  font-weight: 650;
-  padding: 5px 10px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-}
-
-.metaRetryButton:hover {
-  background: rgba(37, 99, 235, 0.14);
+  border-color: rgba(245, 158, 11, 0.38);
+  background: rgba(245, 158, 11, 0.06);
 }
 
 .permitApiStatusWrap {
   margin-top: var(--gap-md);
   margin-left: auto;
   margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--gap-xs);
   max-width: min(100%, 440px);
 }
 
 .permitApiStatusWrap .findRecordMeta {
-  width: fit-content;
+  width: 100%;
   max-width: min(100%, 400px);
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: nowrap;
   padding: 7px 14px;
-}
-
-.metaColdHint {
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.45;
-  color: rgba(15, 23, 42, 0.48);
-  max-width: 52ch;
-  text-align: center;
 }
 
 .metaDot {
@@ -486,9 +426,6 @@
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
   animation: metaDotPulse 1.6s ease-in-out infinite;
   flex-shrink: 0;
-  /* Align with cap height of .findRecordMetaStrong (12px), stable when detail wraps */
-  margin-top: 0.32em;
-  align-self: flex-start;
 }
 
 .metaDot--online {
@@ -504,8 +441,8 @@
 }
 
 .metaDot--offline {
-  background: rgba(239, 68, 68, 0.9);
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.18);
+  background: rgba(245, 158, 11, 0.92);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
   animation: none;
 }
 
