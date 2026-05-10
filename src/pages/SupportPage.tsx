@@ -21,6 +21,17 @@ export function SupportPage() {
         </p>
       </section>
 
+      <section className="card" aria-labelledby="support-scope-heading">
+        <h2 className="cardTitle" id="support-scope-heading">
+          Scope &amp; limitations
+        </h2>
+        <p className="infoCardBody">
+          Right now FastView is built around <strong>construction permit</strong> records.{' '}
+          <strong>Demolition</strong> (&ldquo;demo&rdquo;) permits and <strong>land use (LU)</strong> filings are out of scope
+          for now—those workflows differ on SDCI, so what you see here may not line up with those record types.
+        </p>
+      </section>
+
       <section className="card" aria-labelledby="support-use-heading">
         <h2 className="cardTitle" id="support-use-heading">
           How to use it
@@ -28,7 +39,7 @@ export function SupportPage() {
         <ol className="supportSteps">
           <li>
             <strong>Search</strong>
-            Enter a Seattle DCI record ID (e.g. <code className="infoMono">7058372-CN</code>) and hit Search. If the API has that permit, you&apos;ll open the workflow view.
+            Enter a Seattle permit record number (e.g. <code className="infoMono">7058372-CN</code>) and hit Search. If the API has that permit, you&apos;ll open the workflow view.
           </li>
           <li>
             <strong>Workflow &amp; reviews</strong>

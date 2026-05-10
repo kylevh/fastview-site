@@ -26,6 +26,9 @@ export function HomePage() {
         <p className="homePageSubtitle">
           Enter a record number to load the workflow — current stage, reviews, and SDCI data for that permit.
         </p>
+        <p className="homePageScopeNote">
+          Focus is construction permits; demolition and land use (LU) are out of scope for now.
+        </p>
       </header>
 
       <section className="card findRecordCard homeSearchCard">

@@ -43,6 +43,14 @@
   font-weight: inherit;
 }
 
+.homePageScopeNote {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(15, 23, 42, 0.42);
+}
+
 .homePageSubtitle {
   margin: 0;
   font-size: clamp(15px, 1.35vw, 17px);
