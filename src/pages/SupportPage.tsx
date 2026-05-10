@@ -27,7 +27,7 @@ export function SupportPage() {
         </h2>
         <p className="infoCardBody">
           Right now FastView is built around <strong>construction permit</strong> records.{' '}
-          <strong>Demolition</strong> (&ldquo;demo&rdquo;) permits and <strong>land use (LU)</strong> filings are out of scope
+          <strong>Demolition</strong> permits and <strong>Land Use</strong> filings are out of scope
           for now—those workflows differ on SDCI, so what you see here may not line up with those record types.
         </p>
       </section>
