@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/sdci-api/:path*",
+      "destination": "https://fastview-sdci.onrender.com/:path*"
+    }
+  ]
+}

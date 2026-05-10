@@ -24,6 +24,20 @@
   margin-top: var(--gap-xs);
 }
 
+.reviewStatusCycleBlock {
+  margin-top: var(--gap-md);
+  padding-top: var(--gap-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.reviewStatusCycleBlock .workflowMetaLabel {
+  margin-bottom: 4px;
+}
+
+.reviewStatusCycleValue {
+  font-variant-numeric: tabular-nums;
+}
+
 .reviewStatusRecordTitle {
   font-size: clamp(18px, 2vw, 22px);
   font-weight: 720;
@@ -225,8 +239,55 @@
   display: none;
 }
 
-.reviewSkippedDetails[open] .reviewSkippedSummaryHead {
+.reviewSkippedSummaryMain {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-md);
+}
+
+.reviewSkippedSummaryHead {
+  flex: 1;
+  min-width: 0;
+}
+
+.reviewSkippedExpandCue {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  background: rgba(37, 99, 235, 0.06);
+  color: rgba(37, 99, 235, 0.95);
+}
+
+.reviewSkippedExpandCueLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.reviewSkippedChevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.reviewSkippedDetails[open] .reviewSkippedChevron {
+  transform: rotate(180deg);
+}
+
+.reviewSkippedSummary:hover .reviewSkippedExpandCue {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.reviewSkippedDetails[open] .reviewSkippedSummaryMain {
   border-bottom: 1px solid var(--border);
+  padding-bottom: var(--gap-md);
+  margin-bottom: 0;
 }
 
 /* Align with `.reviewSection .cardTitle` — title row + count badge */
@@ -240,6 +301,17 @@
 .reviewSkippedIcon {
   color: rgba(37, 99, 235, 0.75);
   flex-shrink: 0;
+}
+
+@media (max-width: 520px) {
+  .reviewSkippedSummaryMain {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reviewSkippedExpandCue {
+    align-self: flex-start;
+  }
 }
 
 .nowrap {

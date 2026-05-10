@@ -2,6 +2,7 @@ import { NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { TopBarSearch } from './components/TopBarSearch'
 import { PageTransitionLayout } from './layouts/PageTransitionLayout'
 import { useGlobalRecordSearchValue } from './lib/useGlobalRecordSearchValue'
+import { useDocumentTitle } from './lib/useDocumentTitle'
 import { CircleHelp, Files, GitPullRequestArrow, ScanSearch, Search, ShieldCheck } from 'lucide-react'
 import { TopBarMenus } from './components/TopBarMenus'
 import { HomePage } from './pages/HomePage'
@@ -96,6 +97,8 @@ function SidebarRecordNav() {
 }
 
 function App() {
+  useDocumentTitle()
+
   return (
     <div className="app-shell">
       <aside className="sidebar">

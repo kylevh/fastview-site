@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, MapPin, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, ChevronDown, MapPin, ShieldCheck } from 'lucide-react'
 import { RecordLoadScreen } from '../components/RecordLoadScreen'
 import { formatPortalDate } from '../lib/recordDerived'
 import { usePermitRecordLoad } from '../lib/usePermitRecordLoad'
@@ -92,6 +92,31 @@ function DisciplineTable({ rows }: { rows: DisciplineReviewRow[] }) {
         </tbody>
       </table>
     </div>
+  )
+}
+
+function ReviewSkippedCollapsible({ rows }: { rows: DisciplineReviewRow[] }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <details className="card reviewSkippedDetails" onToggle={(e) => setOpen(e.currentTarget.open)}>
+      <summary className="reviewSkippedSummary">
+        <div className="reviewSkippedSummaryMain">
+          <div className="reviewSectionHead reviewSkippedSummaryHead">
+            <h2 className="cardTitle" id="review-skipped-heading">
+              <ShieldCheck size={18} aria-hidden className="reviewSkippedIcon" />
+              Not required / deferred
+              <span className="reviewSectionCount reviewSectionCount--muted">{rows.length}</span>
+            </h2>
+          </div>
+          <span className="reviewSkippedExpandCue">
+            <span className="reviewSkippedExpandCueLabel">{open ? 'Collapse' : 'Expand'}</span>
+            <ChevronDown size={18} strokeWidth={2.25} className="reviewSkippedChevron" />
+          </span>
+        </div>
+      </summary>
+      <DisciplineTable rows={rows} />
+    </details>
   )
 }
 
@@ -191,6 +216,12 @@ export function ReviewStatusPage() {
                 </span>
                 <span className="reviewRecordAddress">{state.data.portal?.address ?? 'Address not available'}</span>
               </div>
+              <div className="reviewStatusCycleBlock">
+                <span className="workflowMetaLabel">Review cycle</span>
+                <p className="workflowMetaValue reviewStatusCycleValue">
+                  {overview.reviewCycle != null ? overview.reviewCycle : '—'}
+                </p>
+              </div>
             </div>
           </header>
 
@@ -207,18 +238,7 @@ export function ReviewStatusPage() {
           <ReviewSection id="other" title="Other statuses" rows={grouped.other} />
 
           {grouped.skipped.length ? (
-            <details className="card reviewSkippedDetails">
-              <summary className="reviewSkippedSummary">
-                <div className="reviewSectionHead reviewSkippedSummaryHead">
-                  <h2 className="cardTitle" id="review-skipped-heading">
-                    <ShieldCheck size={18} aria-hidden className="reviewSkippedIcon" />
-                    Not required / deferred
-                    <span className="reviewSectionCount reviewSectionCount--muted">{grouped.skipped.length}</span>
-                  </h2>
-                </div>
-              </summary>
-              <DisciplineTable rows={grouped.skipped} />
-            </details>
+            <ReviewSkippedCollapsible key={recordParam} rows={grouped.skipped} />
           ) : null}
         </div>
       ) : null}

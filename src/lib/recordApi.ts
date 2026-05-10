@@ -38,22 +38,27 @@ export type PermitApiHealthErr = {
 
 export type PermitApiHealthResult = PermitApiHealthOk | PermitApiHealthErr
 
+/** True when health checks use same-origin `/sdci-api/*` (Vite dev server or explicit build flag). */
+function healthCheckUsesProxyPath(): boolean {
+  return import.meta.env.DEV === true || import.meta.env.VITE_SDCI_PROXY === 'true'
+}
+
 /**
- * URL for GET `/health`. In dev (and when `VITE_SDCI_PROXY=true`), uses the Vite proxy at `/sdci-api`
- * so the browser talks same-origin — avoids CORS when only `/api/*` is configured on the server.
- * In production builds, uses `getPermitApiBaseUrl()/health` (your API must allow that origin for GET /health).
+ * Primary URL for GET `/health`.
+ * - Dev / `VITE_SDCI_PROXY`: `/sdci-api/health` (Vite or static host rewrites → backend).
+ * - Otherwise: absolute `${VITE_SDCI_API_BASE}/health` (needs CORS on the API for that route).
  */
 function healthCheckRequestUrl(): string {
-  const useProxy = import.meta.env.DEV === true || import.meta.env.VITE_SDCI_PROXY === 'true'
-  if (useProxy) {
+  if (healthCheckUsesProxyPath()) {
     return '/sdci-api/health'
   }
   return `${getPermitApiBaseUrl()}/health`
 }
 
-/** GET `/health` — expects JSON `{ "ok": true }`. Long default timeout supports Render free-tier cold start. */
-export async function fetchPermitApiHealth(timeoutMs = 75_000): Promise<PermitApiHealthResult> {
-  const url = healthCheckRequestUrl()
+/** Same-origin fallback when direct `/health` is blocked by CORS (common if only `/api/*` allows browser origins). */
+const HEALTH_PROXY_FALLBACK = '/sdci-api/health'
+
+async function fetchPermitHealthOnce(url: string, timeoutMs: number): Promise<PermitApiHealthResult> {
   const t0 = performance.now()
   const ac = new AbortController()
   const tid = window.setTimeout(() => ac.abort(), timeoutMs)
@@ -86,6 +91,28 @@ export async function fetchPermitApiHealth(timeoutMs = 75_000): Promise<PermitAp
     }
     return { ok: false, reason: 'network' }
   }
+}
+
+/**
+ * GET `/health` — expects JSON `{ "ok": true }`.
+ * If the primary URL fails with a **network** error (often cross-origin CORS on `/health` while `/api/permit/*`
+ * still works), retries once via same-origin `HEALTH_PROXY_FALLBACK` when static hosting rewrites `/sdci-api/*`
+ * to the API (see `public/_redirects` / `vercel.json`).
+ */
+export async function fetchPermitApiHealth(timeoutMs = 75_000): Promise<PermitApiHealthResult> {
+  const primary = healthCheckRequestUrl()
+  const first = await fetchPermitHealthOnce(primary, timeoutMs)
+  if (first.ok) return first
+
+  const canTryProxyFallback =
+    !healthCheckUsesProxyPath() && first.reason === 'network' && primary !== HEALTH_PROXY_FALLBACK
+
+  if (canTryProxyFallback) {
+    const second = await fetchPermitHealthOnce(HEALTH_PROXY_FALLBACK, timeoutMs)
+    if (second.ok) return second
+  }
+
+  return first
 }
 
 /** Session-scoped cache so routes (e.g. workflow → review status) don't repeat large permit fetches. */
