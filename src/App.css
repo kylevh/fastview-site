@@ -7,12 +7,12 @@
 }
 
 .sidebar {
-  padding: 22px 18px;
+  padding: var(--grid-card-gap) var(--card-padding);
   border-right: 1px solid var(--border);
   background: var(--bg);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--gap-lg);
 }
 
 .brand {
@@ -22,13 +22,13 @@
   padding: 12px;
   border: 1px solid var(--border);
   background: var(--panel);
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
 }
 
 .brandMark {
   width: 38px;
   height: 38px;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   display: grid;
   place-items: center;
   color: var(--accent);
@@ -61,7 +61,7 @@
   align-items: center;
   gap: 10px;
   padding: 9px 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   color: rgba(15, 23, 42, 0.72);
   text-decoration: none;
   border: 1px solid transparent;
@@ -95,6 +95,16 @@
 
 .navItem.active .navIcon {
   color: var(--accent);
+}
+
+.navItemDisabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.navItemDisabled .navIcon {
+  color: rgba(15, 23, 42, 0.38);
 }
 
 .sidebarBottom {
@@ -139,9 +149,9 @@
   gap: 10px;
   height: 38px;
   padding: 0 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(15, 23, 42, 0.02);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-sunken);
 }
 
 .topbarSearchIcon {
@@ -161,8 +171,8 @@
 }
 
 .topbarSearch:focus-within {
-  border-color: rgba(37, 99, 235, 0.55);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-ring-focus);
 }
 
 .topbarRight {
@@ -171,53 +181,179 @@
   gap: 10px;
 }
 
+.topbarMenus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbarMenuWrap {
+  position: relative;
+}
+
+.topbarPopover {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 60;
+  min-width: 280px;
+  max-width: min(320px, 92vw);
+  padding: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow-md, 0 12px 40px rgba(15, 23, 42, 0.12));
+}
+
+.topbarPopoverHeader {
+  padding: 10px 12px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.45);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbarPopoverBody {
+  padding: 12px;
+}
+
+.topbarPopoverEmpty {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(15, 23, 42, 0.52);
+  text-align: center;
+  padding: 20px 12px;
+}
+
+.topbarLoginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topbarLoginField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topbarLoginLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.topbarLoginInput {
+  width: 100%;
+  box-sizing: border-box;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border);
+  background: var(--surface-sunken);
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.topbarLoginInput:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-ring-focus);
+}
+
+.topbarLoginSubmit {
+  margin-top: 2px;
+  height: 34px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  background: rgba(37, 99, 235, 0.12);
+  color: rgba(30, 64, 175, 0.95);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.topbarLoginSubmit:hover:not(:disabled) {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.topbarLoginSubmit:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.topbarLoginTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border);
+  background: var(--surface-sunken);
+  color: rgba(15, 23, 42, 0.78);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.topbarLoginTrigger:hover {
+  border-color: rgba(37, 99, 235, 0.28);
+  background: var(--surface-hover);
+}
+
+.topbarLoginTriggerActive {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: var(--surface-hover);
+}
+
+@media (max-width: 520px) {
+  .topbarLoginTriggerLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .topbarLoginTrigger {
+    padding: 0 10px;
+  }
+}
+
 .iconButton {
   position: relative;
   appearance: none;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(15, 23, 42, 0.02);
+  border: 1px solid var(--border);
+  background: var(--surface-sunken);
   color: rgba(15, 23, 42, 0.72);
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   display: grid;
   place-items: center;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .iconButton:hover {
   border-color: rgba(37, 99, 235, 0.28);
-  background: rgba(37, 99, 235, 0.06);
+  background: var(--surface-hover);
 }
 
-.iconDot {
-  position: absolute;
-  top: 9px;
-  right: 10px;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: #ef4444;
-  border: 2px solid var(--panel);
-}
-
-.profileButton {
-  appearance: none;
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-}
-
-.profileAvatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  color: rgba(15, 23, 42, 0.6);
-  background: rgba(15, 23, 42, 0.02);
-  border: 1px solid rgba(15, 23, 42, 0.12);
+.iconButton.iconButtonActive {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: var(--surface-hover);
 }
 
 @media (max-width: 700px) {
@@ -233,8 +369,35 @@
 }
 
 .content {
-  padding: 26px;
+  padding: 44px 26px 26px;
   overflow: auto;
+  overflow-x: clip;
+}
+
+.pageTransition {
+  min-height: min(560px, 70vh);
+}
+
+/* Route enter: CSS-only (no Framer) — stable with React Strict Mode */
+@keyframes pageRouteEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pageRouteEnter {
+  animation: pageRouteEnter 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pageRouteEnter {
+    animation: none;
+  }
 }
 
 @media (max-width: 900px) {

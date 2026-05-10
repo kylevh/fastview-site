@@ -1,0 +1,247 @@
+.reviewStatusPage .workflowReviewsHero {
+  margin-bottom: 0;
+}
+
+.reviewStatusPage .workflowReviewsHeroHeadline {
+  margin-bottom: 0;
+}
+
+.reviewStatusIntro {
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, #ffffff 0%, rgba(248, 250, 252, 0.92) 100%);
+  border-radius: var(--card-radius);
+  padding: var(--gap-md) var(--card-padding);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.045);
+}
+
+.reviewStatusIntroNav {
+  margin-bottom: var(--gap-md);
+  padding-bottom: var(--gap-md);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.reviewStatusIntroMain .addressRow {
+  margin-top: var(--gap-xs);
+}
+
+.reviewStatusRecordTitle {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 720;
+  letter-spacing: -0.025em;
+}
+
+.reviewStatusAddressRow .addressIcon {
+  color: rgba(15, 23, 42, 0.38);
+}
+
+.reviewRecordAddress {
+  font-size: 13px;
+  font-weight: 450;
+  color: rgba(15, 23, 42, 0.52);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.reviewBackWorkflow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(37, 99, 235, 0.98);
+  text-decoration: none;
+  padding: 6px 10px;
+  margin: -6px -10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+}
+
+.reviewBackWorkflow:hover {
+  background: var(--surface-hover);
+  border-color: rgba(37, 99, 235, 0.18);
+}
+
+.reviewSection--corrections {
+  border-color: rgba(252, 165, 165, 0.65);
+  background: linear-gradient(180deg, rgba(254, 242, 242, 0.75) 0%, var(--panel) 52%);
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.03),
+    0 14px 36px rgba(185, 28, 28, 0.045);
+}
+
+.reviewSectionHead {
+  margin-bottom: var(--gap-md);
+}
+
+.reviewSection .cardTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  flex-wrap: wrap;
+}
+
+.reviewSectionCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(15, 23, 42, 0.72);
+  background: rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.reviewSectionCount--muted {
+  color: var(--muted);
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.reviewDisciplineTableWrap {
+  overflow-x: auto;
+  margin: 0 calc(-1 * var(--card-padding));
+  padding: 0 var(--card-padding);
+}
+
+.reviewDisciplineTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.reviewDisciplineTable th {
+  text-align: left;
+  font-weight: 650;
+  color: rgba(15, 23, 42, 0.55);
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.reviewDisciplineTable td {
+  padding: 12px 12px 12px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  vertical-align: top;
+}
+
+.reviewDisciplineTable tr:last-child td {
+  border-bottom: none;
+}
+
+.reviewDisciplineName {
+  font-weight: 650;
+  color: var(--text);
+}
+
+.reviewPendingTag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(37, 99, 235, 0.95);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.reviewStatusPill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.25;
+  max-width: min(280px, 100%);
+  white-space: normal;
+}
+
+.reviewStatusPill--danger {
+  color: rgba(185, 28, 28, 0.98);
+  background: rgba(254, 226, 226, 0.92);
+  border: 1px solid rgba(239, 68, 68, 0.38);
+}
+
+.reviewStatusPill--warn {
+  color: rgba(154, 52, 18, 0.98);
+  background: rgba(255, 237, 213, 0.85);
+  border: 1px solid rgba(251, 146, 60, 0.45);
+}
+
+.reviewStatusPill--active {
+  color: rgba(30, 64, 175, 0.98);
+  background: rgba(219, 234, 254, 0.85);
+  border: 1px solid rgba(96, 165, 250, 0.5);
+}
+
+.reviewStatusPill--queue {
+  color: rgba(55, 65, 81, 0.98);
+  background: rgba(243, 244, 246, 0.95);
+  border: 1px solid rgba(156, 163, 175, 0.45);
+}
+
+.reviewStatusPill--ok {
+  color: rgba(21, 128, 61, 0.98);
+  background: rgba(220, 252, 231, 0.85);
+  border: 1px solid rgba(74, 222, 128, 0.45);
+}
+
+.reviewStatusPill--muted {
+  color: var(--muted);
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.reviewStatusPill--other {
+  color: rgba(91, 33, 182, 0.95);
+  background: rgba(237, 233, 254, 0.85);
+  border: 1px solid rgba(167, 139, 250, 0.45);
+}
+
+.reviewAssignedCell {
+  color: rgba(15, 23, 42, 0.72);
+  font-size: 12px;
+}
+
+/* Keep default `.card` horizontal padding — `padding: 0` here made tables hug the border while the
+   summary had its own inset; negative margins on `.reviewDisciplineTableWrap` then misaligned. */
+.reviewSkippedDetails {
+  overflow: hidden;
+}
+
+.reviewSkippedSummary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.reviewSkippedSummary::-webkit-details-marker {
+  display: none;
+}
+
+.reviewSkippedDetails[open] .reviewSkippedSummaryHead {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Align with `.reviewSection .cardTitle` — title row + count badge */
+.reviewSkippedDetails .reviewSkippedSummaryHead .cardTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  flex-wrap: wrap;
+}
+
+.reviewSkippedIcon {
+  color: rgba(37, 99, 235, 0.75);
+  flex-shrink: 0;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

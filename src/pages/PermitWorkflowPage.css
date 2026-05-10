@@ -1,0 +1,764 @@
+.workflowBackRow {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+  flex-wrap: wrap;
+}
+
+.backToDashboard {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-xs);
+  padding: 8px 12px;
+  margin: -8px 0 -8px -10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(37, 99, 235, 0.98);
+  cursor: pointer;
+}
+
+.backToDashboard:hover {
+  background: var(--surface-hover);
+  border-color: rgba(37, 99, 235, 0.18);
+}
+
+.recordHeading {
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 780;
+  letter-spacing: -0.03em;
+}
+
+.addressRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-sm);
+  margin-top: var(--gap-xs);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.addressIcon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: rgba(37, 99, 235, 0.85);
+}
+
+.workflowFadeIn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  animation: workflowFadeIn 420ms ease-out both;
+}
+
+@keyframes workflowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes workflowActiveMarkerGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px rgba(37, 99, 235, 0.16),
+      0 2px 8px rgba(37, 99, 235, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 0 10px rgba(37, 99, 235, 0.07),
+      0 3px 14px rgba(37, 99, 235, 0.32);
+  }
+}
+
+@keyframes workflowActiveDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.42;
+    transform: scale(0.86);
+  }
+}
+
+.workflowDashboardPage {
+  max-width: min(1240px, 100%);
+}
+
+.workflowRecordStatusBar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--gap-md) var(--gap-xl);
+  align-items: end;
+}
+
+.workflowRecordStatusBarLead {
+  min-width: 0;
+}
+
+.workflowRecordStatusBarKicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-sm) var(--gap-md);
+  margin-bottom: var(--gap-xs);
+}
+
+.workflowRecordStatusBarEyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.workflowRecordStatusLiveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(37, 99, 235, 0.96);
+  background: rgba(37, 99, 235, 0.09);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+}
+
+.workflowRecordStatusLiveDot {
+  flex-shrink: 0;
+  color: rgba(37, 99, 235, 0.98);
+  animation: workflowLiveDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes workflowLiveDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.workflowRecordStatusBarStage {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  font-weight: 760;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: rgba(37, 99, 235, 0.96);
+}
+
+.workflowRecordStatusBarHint {
+  margin: var(--gap-sm) 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  max-width: 52ch;
+}
+
+.workflowRecordStatusBarCycle {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.workflowRecordStatusBarCycle .workflowMetaLabel {
+  text-align: right;
+}
+
+.workflowRecordStatusBarCycleValue {
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  font-weight: 720;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 560px) {
+  .workflowRecordStatusBar {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .workflowRecordStatusBarCycle {
+    justify-self: end;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .workflowRecordStatusBarCycle .workflowMetaLabel {
+    text-align: right;
+  }
+}
+
+.workflowDashboardGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr);
+  gap: var(--grid-card-gap);
+  align-items: start;
+}
+
+.workflowReviewsColumn {
+  min-width: 0;
+}
+
+.workflowReviewsColumn .workflowReviewsHero {
+  padding: var(--card-padding);
+  gap: var(--gap-md);
+}
+
+.workflowReviewsColumn .workflowReviewsHeroHeadline {
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+}
+
+.workflowReviewsColumn .workflowReviewsHeroHeader {
+  gap: var(--gap-md);
+}
+
+.workflowReviewsColumn .workflowReviewsHeroIconWrap {
+  width: 46px;
+  height: 46px;
+}
+
+.workflowRecordPanel {
+  min-width: 0;
+}
+
+@media (max-width: 960px) {
+  .workflowDashboardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Review snapshot card — sits in right column beside workflow */
+.workflowReviewsHero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  padding: calc(var(--card-padding) + 10px);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.04),
+    0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.workflowReviewsHero--phaseActive {
+  border-color: rgba(37, 99, 235, 0.42);
+  background: linear-gradient(
+    165deg,
+    rgba(37, 99, 235, 0.12) 0%,
+    rgba(37, 99, 235, 0.04) 42%,
+    var(--panel) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(37, 99, 235, 0.12),
+    0 20px 44px rgba(37, 99, 235, 0.14);
+}
+
+.workflowReviewsHero--corrections {
+  border-color: rgba(239, 68, 68, 0.38);
+  background: linear-gradient(
+    165deg,
+    rgba(254, 202, 202, 0.55) 0%,
+    rgba(254, 242, 242, 0.92) 42%,
+    var(--panel) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(15, 23, 42, 0.04),
+    0 18px 40px rgba(185, 28, 28, 0.06);
+}
+
+.workflowReviewsHero--follow-up {
+  border-color: rgba(234, 88, 12, 0.38);
+  background: linear-gradient(
+    165deg,
+    rgba(254, 215, 170, 0.35) 0%,
+    var(--panel) 55%
+  );
+}
+
+.workflowReviewsHero--in-review {
+  border-color: rgba(37, 99, 235, 0.32);
+  background: linear-gradient(
+    165deg,
+    rgba(37, 99, 235, 0.09) 0%,
+    rgba(239, 246, 255, 0.65) 45%,
+    var(--panel) 100%
+  );
+}
+
+.workflowReviewsHero--waiting {
+  border-color: rgba(100, 116, 139, 0.28);
+  background: linear-gradient(
+    165deg,
+    rgba(241, 245, 249, 0.95) 0%,
+    var(--panel) 58%
+  );
+}
+
+.workflowReviewsHero--clear {
+  border-color: rgba(5, 150, 105, 0.32);
+  background: linear-gradient(
+    165deg,
+    rgba(5, 150, 105, 0.08) 0%,
+    var(--panel) 62%
+  );
+}
+
+.workflowReviewsHeroHeader {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: flex-start;
+}
+
+.workflowReviewsHeroIconWrap {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: rgba(37, 99, 235, 0.12);
+  color: rgba(37, 99, 235, 0.96);
+}
+
+/* Must precede emphasis overrides below — `.workflowReviewsHero--corrections` etc. win when combined with phase active */
+.workflowReviewsHero--phaseActive .workflowReviewsHeroIconWrap {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.workflowReviewsHero--corrections .workflowReviewsHeroIconWrap {
+  background: rgba(254, 202, 202, 0.75);
+  color: rgba(185, 28, 28, 0.98);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+}
+
+.workflowReviewsHero--follow-up .workflowReviewsHeroIconWrap {
+  background: rgba(217, 119, 6, 0.15);
+  color: rgba(180, 83, 9, 0.98);
+}
+
+.workflowReviewsHero--clear .workflowReviewsHeroIconWrap {
+  background: rgba(5, 150, 105, 0.14);
+  color: rgba(4, 120, 87, 0.98);
+}
+
+.workflowReviewsHero--in-review .workflowReviewsHeroIconWrap {
+  background: rgba(37, 99, 235, 0.14);
+  color: rgba(29, 78, 216, 0.98);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+}
+
+.workflowReviewsHero--waiting .workflowReviewsHeroIconWrap {
+  background: rgba(100, 116, 139, 0.1);
+  color: rgba(71, 85, 105, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.workflowReviewsHeroText {
+  min-width: 0;
+}
+
+.workflowReviewsHeroEyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(37, 99, 235, 0.88);
+  margin-bottom: var(--gap-xs);
+}
+
+.workflowReviewsHero--corrections .workflowReviewsHeroEyebrow {
+  color: rgba(185, 28, 28, 0.92);
+}
+
+.workflowReviewsHero--follow-up .workflowReviewsHeroEyebrow {
+  color: rgba(180, 83, 9, 0.92);
+}
+
+.workflowReviewsHero--clear .workflowReviewsHeroEyebrow {
+  color: rgba(4, 120, 87, 0.88);
+}
+
+.workflowReviewsHeroHeadline {
+  margin: 0 0 var(--gap-sm);
+  font-size: clamp(1.35rem, 3.2vw, 1.95rem);
+  font-weight: 780;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+  color: var(--text);
+}
+
+.workflowReviewsHeroDetail {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.workflowReviewsHeroCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-md);
+  width: 100%;
+  padding: 16px 22px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: rgba(37, 99, 235, 0.96);
+  color: #fff;
+  font-weight: 760;
+  font-size: 15px;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  box-shadow:
+    0 3px 12px rgba(37, 99, 235, 0.38),
+    0 1px 2px rgba(15, 23, 42, 0.06);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.workflowReviewsHeroCta:hover {
+  background: rgba(29, 78, 216, 0.98);
+  box-shadow:
+    0 6px 22px rgba(37, 99, 235, 0.45),
+    0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.workflowReviewsHeroCta:active {
+  transform: translateY(1px);
+}
+
+.workflowReviewsHeroCtaLabel {
+  flex: 1;
+  text-align: center;
+}
+
+.workflowReviewsHeroFoot {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.workflowMetaLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--gap-xs);
+}
+
+.workflowMetaValue {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--text);
+}
+
+/* Flat list — no nested grey panel; parent .card supplies the surface
+   Tri-state legibility: green = done, blue panel = current, grey = upcoming */
+.workflowDiagram {
+  --wf-done: #059669;
+  --wf-done-ink: #047857;
+  --wf-done-rail: rgba(5, 150, 105, 0.45);
+  --wf-active-surface: rgba(37, 99, 235, 0.1);
+  margin-top: var(--gap-md);
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.workflowDiagram--compact {
+  margin-top: var(--gap-sm);
+}
+
+.workflowTimeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.workflowDiagram--compact .workflowTimelineStep {
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 0 var(--gap-sm);
+}
+
+.workflowTimelineStep {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 0 var(--gap-md);
+  align-items: start;
+}
+
+.workflowTimelineStep:not(:last-child) {
+  padding-bottom: var(--gap-md);
+  margin-bottom: var(--gap-md);
+  border-bottom: 1px solid var(--border);
+}
+
+.workflowDiagram--compact .workflowTimelineStep:not(:last-child) {
+  padding-bottom: var(--gap-xs);
+  margin-bottom: var(--gap-xs);
+}
+
+.workflowTimelineRail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  padding-top: 8px;
+}
+
+.workflowDiagram--compact .workflowTimelineRail {
+  width: 34px;
+  padding-top: 4px;
+}
+
+.workflowTimelineMarker {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+.workflowTimelineMarker-complete {
+  background: var(--wf-done);
+  color: white;
+}
+
+.workflowDiagram--compact .workflowTimelineMarker {
+  width: 26px;
+  height: 26px;
+}
+
+.workflowTimelineMarkIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.workflowDiagram--compact .workflowTimelineMarkIcon {
+  width: 13px;
+  height: 13px;
+}
+
+.workflowTimelineMarker-active {
+  background: #fff;
+  border: 3px solid var(--accent);
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.16),
+    0 2px 8px rgba(37, 99, 235, 0.2);
+  animation: workflowActiveMarkerGlow 2.4s ease-in-out infinite;
+}
+
+.workflowTimelineMarkPulse {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95);
+  transform-origin: center;
+  animation: workflowActiveDotPulse 2.4s ease-in-out infinite;
+}
+
+.workflowDiagram--compact .workflowTimelineMarkPulse {
+  width: 10px;
+  height: 10px;
+}
+
+.workflowTimelineMarker-pending {
+  border: 2px solid var(--border);
+  background: var(--panel);
+}
+
+.workflowTimelineMarkPending {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  opacity: 0.45;
+}
+
+.workflowDiagram--compact .workflowTimelineMarkPending {
+  width: 7px;
+  height: 7px;
+}
+
+.workflowTimelineSeg {
+  width: 2px;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  flex: 0 0 auto;
+  height: 18px;
+  border-radius: var(--radius-full);
+  background: var(--border);
+}
+
+.workflowDiagram--compact .workflowTimelineSeg {
+  margin-top: 4px;
+  height: 10px;
+}
+
+.workflowTimelineSeg-done {
+  background: var(--wf-done-rail);
+  opacity: 1;
+}
+
+.workflowTimelineBody {
+  min-width: 0;
+}
+
+.workflowTimelinePanel {
+  padding: 4px 0 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.workflowDiagram--compact .workflowTimelinePanel {
+  padding: 1px 0 0;
+}
+
+.workflowTimelineMeta {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.workflowDiagram--compact .workflowTimelineMeta {
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.workflowTimelineLabel {
+  display: block;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.workflowDiagram--compact .workflowTimelineLabel {
+  font-size: 14px;
+  line-height: 1.32;
+}
+
+.workflowTimelineStep.workflowStage-complete .workflowTimelineMeta {
+  color: var(--wf-done-ink);
+}
+
+.workflowTimelineStep.workflowStage-complete .workflowTimelineLabel {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.workflowTimelineStep.workflowStage-active {
+  padding: var(--gap-sm) var(--gap-md);
+  margin-left: calc(-1 * var(--gap-md));
+  margin-right: calc(-1 * var(--gap-md));
+  border-radius: var(--radius-sm);
+  background: var(--wf-active-surface);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+}
+
+.workflowDiagram--compact .workflowTimelineStep.workflowStage-active {
+  padding: var(--gap-xs) var(--gap-sm);
+  margin-left: calc(-1 * var(--gap-sm));
+  margin-right: calc(-1 * var(--gap-sm));
+}
+
+.workflowTimelineStep.workflowStage-active .workflowTimelineMeta {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.workflowTimelineStep.workflowStage-active .workflowTimelineLabel {
+  font-weight: 780;
+  color: var(--text);
+}
+
+.workflowTimelineStep.workflowStage-pending .workflowTimelineMeta {
+  color: var(--muted);
+}
+
+.workflowTimelineStep.workflowStage-pending .workflowTimelineLabel {
+  color: var(--muted);
+  font-weight: 580;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workflowTimelineMarker-active,
+  .workflowTimelineMarkPulse,
+  .workflowRecordStatusLiveDot {
+    animation: none !important;
+  }
+
+  .workflowTimelineMarker-active {
+    box-shadow:
+      0 0 0 4px rgba(37, 99, 235, 0.16),
+      0 2px 8px rgba(37, 99, 235, 0.2);
+  }
+}
+
+.metaGrid {
+  display: grid;
+  gap: var(--gap-md);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-top: var(--gap-md);
+}
+
+.metaItem {
+  padding: var(--gap-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+  background: var(--surface-sunken);
+}
+
+.metaItem kbd {
+  display: block;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--gap-xs);
+}
+
+.metaItem div {
+  font-weight: 650;
+  font-size: 14px;
+}
+
+.workflowEmpty {
+  max-width: 560px;
+}
+
+.workflowError {
+  border-color: rgba(239, 68, 68, 0.28);
+  background: rgba(239, 68, 68, 0.06);
+}
