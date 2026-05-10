@@ -61,9 +61,6 @@ export function SupportPage() {
             <strong>Cold servers:</strong> Free-tier hosts nap when idle. First request after a while can take minutes (sometimes ~five).
           </li>
           <li>
-            <strong>Chip says bad but you&apos;re stubborn:</strong> Try searching anyway—the health check and the permit fetch aren&apos;t identical.
-          </li>
-          <li>
             <strong>Wrong or missing record:</strong> Double-check the ID on the real{' '}
             <a className="infoExternal" href="https://www.seattle.gov/sdci" target="_blank" rel="noopener noreferrer">
               SDCI
